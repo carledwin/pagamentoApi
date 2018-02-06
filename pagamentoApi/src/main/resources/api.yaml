@@ -2,7 +2,7 @@
 swagger: "2.0" 
 info:
   description: "Descricao da API de pagamento"
-  version: "1.0.0"
+  version: "1.0.0" 
   title: "Pagamento API"
   contact:
     email: "carlinstr@gmail.com"
