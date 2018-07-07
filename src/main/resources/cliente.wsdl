@@ -1,0 +1,151 @@
+This XML file does not appear to have any style information associated with it. The document tree is shown below.
+<!--
+ 
+(c) Carl Edwin TI
+2018-07-07
+Descrição do meu serviço ws
+
+Online WSDL 1.1 SOAP generator 0.2
+Julien Blitte
+ 
+-->
+<definitions xmlns:tns="com.wordpress.carledwinj.wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsd1="com.wordpress.carledwinj.xsd" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns="http://schemas.xmlsoap.org/wsdl/" name="Descrição do meu serviço ws" targetNamespace="com.wordpress.carledwinj.wsdl">
+ <!--  definition of datatypes  -->
+<types>
+<schema xmlns="http://www.w3.org/2000/10/XMLSchema" targetNamespace="com.wordpress.carledwinj.xsd">
+<element name="id">
+<complexType>
+<all>
+<element name="value" type="int"/>
+</all>
+</complexType>
+</element>
+<element name="nome">
+<complexType>
+<all>
+<element name="value" type="string"/>
+</all>
+</complexType>
+</element>
+<element name="sobrenome">
+<complexType>
+<all>
+<element name="value" type="string"/>
+</all>
+</complexType>
+</element>
+<element name="status">
+<complexType>
+<all>
+<element name="value" type="string"/>
+</all>
+</complexType>
+</element>
+<element name="date">
+<complexType>
+<all>
+<element name="value" type="string"/>
+</all>
+</complexType>
+</element>
+</schema>
+</types>
+ <!--  response messages  -->
+<message name="returns_id">
+<part name="id" type="xsd:id"/>
+</message>
+ <!--  request messages  -->
+<message name="salva_cliente">
+<part name="nome" type="xsd:nome"/>
+<part name="sobrenome" type="xsd:sobrenome"/>
+<part name="status" type="xsd:status"/>
+<part name="date" type="xsd:date"/>
+</message>
+<message name="altera_cliente">
+<part name="id" type="xsd:id"/>
+<part name="nome" type="xsd:nome"/>
+<part name="sobrenome" type="xsd:sobrenome"/>
+<part name="status" type="xsd:status"/>
+<part name="date" type="xsd:date"/>
+</message>
+<message name="exclui_cliente">
+<part name="id" type="xsd:id"/>
+</message>
+<message name="consulta_cliente">
+<part name="nome" type="xsd:nome"/>
+</message>
+ <!--  server's services  -->
+<portType name="carledwinti">
+<operation name="salva_cliente">
+<input message="tns:salva_cliente"/>
+<output message="tns:returns_id"/>
+</operation>
+<operation name="altera_cliente">
+<input message="tns:altera_cliente"/>
+<output message="tns:returns_id"/>
+</operation>
+<operation name="exclui_cliente">
+<input message="tns:exclui_cliente"/>
+<output message="tns:returns_id"/>
+</operation>
+<operation name="consulta_cliente">
+<input message="tns:consulta_cliente"/>
+<output message="tns:returns_id"/>
+</operation>
+</portType>
+ <!--  server encoding  -->
+<binding name="carledwinti_webservices" type="tns:carledwinti">
+<soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+<operation name="salva_cliente">
+<soap:operation soapAction="urn:xmethods-delayed-quotes#salva_cliente"/>
+<input>
+<soap:body use="encoded" namespace="urn:xmethods-delayed-quotes" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+</input>
+<output>
+<soap:body use="encoded" namespace="urn:xmethods-delayed-quotes" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+</output>
+</operation>
+<operation name="altera_cliente">
+<soap:operation soapAction="urn:xmethods-delayed-quotes#altera_cliente"/>
+<input>
+<soap:body use="encoded" namespace="urn:xmethods-delayed-quotes" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+</input>
+<output>
+<soap:body use="encoded" namespace="urn:xmethods-delayed-quotes" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+</output>
+</operation>
+<operation name="exclui_cliente">
+<soap:operation soapAction="urn:xmethods-delayed-quotes#exclui_cliente"/>
+<input>
+<soap:body use="encoded" namespace="urn:xmethods-delayed-quotes" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+</input>
+<output>
+<soap:body use="encoded" namespace="urn:xmethods-delayed-quotes" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+</output>
+</operation>
+<operation name="consulta_cliente">
+<soap:operation soapAction="urn:xmethods-delayed-quotes#consulta_cliente"/>
+<input>
+<soap:body use="encoded" namespace="urn:xmethods-delayed-quotes" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+</input>
+<output>
+<soap:body use="encoded" namespace="urn:xmethods-delayed-quotes" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+</output>
+</operation>
+</binding>
+ <!--  access to service provider  -->
+<service name="clientes">
+<port name="clientes_0" binding="carledwinti_webservices">
+<soap:address location="http://127.0.0.1./cliente_soap/endpoint-alteracao.php"/>
+</port>
+<port name="clientes_1" binding="carledwinti_webservices">
+<soap:address location="http://127.0.0.1./cliente_soap/endpoint-inclusao.php"/>
+</port>
+<port name="clientes_2" binding="carledwinti_webservices">
+<soap:address location="http://127.0.0.1./cliente_soap/endpoint-consulta.php"/>
+</port>
+<port name="clientes_3" binding="carledwinti_webservices">
+<soap:address location="http://127.0.0.1./cliente_soap/endpoint-exclusao.php"/>
+</port>
+</service>
+</definitions>
